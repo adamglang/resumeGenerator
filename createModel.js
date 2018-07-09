@@ -20,13 +20,15 @@ class CreateModel {
     const locationEl = document.querySelector(".pv-top-card-section__location");
     const location = locationEl && CreateModel.stripSpace(locationEl.textContent);
     const profileInitials = CreateModel.getInitials(profileName);
+    const date = CreateModel.makeFormattedDate();
 
     return {
       "profileImg": profileImg,
       "profileName": profileName,
       "profileInitials": profileInitials,
       "jobTitle": jobTitle,
-      "location": location
+      "location": location,
+      "date": date
     }
   }
 
@@ -166,6 +168,11 @@ class CreateModel {
 
   static stripSpace(str){
     return (str && str.replace(/[\n\r]+|[\s]{2,}/g, " ").trim()) || "";
+  }
+
+  static makeFormattedDate() {
+    const date = new Date();
+    return `0${(date.getMonth() + 1)} - 0${(date.getDate())} - ${date.getFullYear()}`
   }
 }
 

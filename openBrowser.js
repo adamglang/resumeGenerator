@@ -1,7 +1,7 @@
 const puppeteer = require("puppeteer");
 const constants = require("./constants");
 
-module.exports = class OpenBrowser {
+class OpenBrowser {
   static async init() {
     const browser = await puppeteer.launch({"headless": constants.isHeadless});
     const page = await browser.newPage();
@@ -9,3 +9,5 @@ module.exports = class OpenBrowser {
     return page;
   }
 };
+
+module.exports = OpenBrowser;

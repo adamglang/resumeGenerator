@@ -1,7 +1,8 @@
 const createModel = require("./createModel");
 const getDOM = require("./getDOM");
-const program = require("commander");
 const openBrowser = require("./openBrowser");
+const mountResume = require("./mountResume");
+const program = require("commander");
 
 class WriteFile {
   async init() {
@@ -16,6 +17,7 @@ class WriteFile {
       const model = await createModel.init(window.document);
       const strReturnedObj = JSON.stringify(model);
       console.log(strReturnedObj);
+      await mountResume.init(page);
       //process.exit();
     } catch(e) {
       console.error(`Something went wrong: ${e.stack}`);
