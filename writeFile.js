@@ -1,5 +1,7 @@
 const createModel = require("./createModel");
+const getDOM = require("./getDOM");
 const program = require("commander");
+const openBrowser = require("./openBrowser");
 
 class WriteFile {
   async init() {
@@ -9,7 +11,9 @@ class WriteFile {
     const pw = program.args[1];
 
     try {
-      const model = await createModel.init(un, pw);
+      const page = await openBrowser.init();
+      const window = await getDOM.init(un, pw, page);
+      const model = await createModel.init(window.document);
       const strReturnedObj = JSON.stringify(model);
       console.log(strReturnedObj);
       //process.exit();

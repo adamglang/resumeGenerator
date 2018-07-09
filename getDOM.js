@@ -1,17 +1,14 @@
-const puppeteer = require("puppeteer");
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-const configs = require("./configs");
+const constants = require("./constants");
 
 class GetDOM {
-  static async init(un, pw) {
+  static async init(un, pw, page) {
     try {
-      const page = await GetDOM.openBrowser();
-
       //Hack to quickly work around linkedin's lazy loader
       page.setViewport({
-        "width": configs.viewportWidth,
-        "height": configs.viewportHeight
+        "width": constants.viewportWidth,
+        "height": constants.viewportHeight
       });
 
       await GetDOM.fillAndSubmitAuth(page, un, pw);
@@ -48,13 +45,6 @@ class GetDOM {
 
     return page;
   }
-
-  static async openBrowser() {
-    const browser = await puppeteer.launch({"headless": configs.isHeadless});
-    const page = await browser.newPage();
-    await page.goto("https://www.linkedin.com/", {"waitUntil": "networkidle2"});
-    return page;
-  }
-};
+}
 
 module.exports = GetDOM;

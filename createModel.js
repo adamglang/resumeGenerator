@@ -1,12 +1,5 @@
-const getDOM = require("./getDOM");
-
 class CreateModel {
-  static async init(un, pw) {
-    const window = await getDOM.init(un, pw);
-    return CreateModel.buildJSON(window, window.document);
-  }
-
-  static buildJSON(window, document) {
+  static async init(document) {
     return {
       "headerData": CreateModel.getHeaderData(document),
       "description": CreateModel.getDescription(document),
