@@ -10,10 +10,11 @@ class WriteFile {
 
     const un = program.args[0];
     const pw = program.args[1];
+    const profile = program.args[2];
 
     try {
       const page = await openBrowser.init();
-      const window = await getDOM.init(un, pw, page);
+      const window = await getDOM.init(un, pw, profile, page);
       const model = await createModel.init(window.document);
       const strReturnedObj = JSON.stringify(model);
       console.log(strReturnedObj);

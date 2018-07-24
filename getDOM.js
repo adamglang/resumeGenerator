@@ -3,7 +3,7 @@ const { JSDOM } = jsdom;
 const constants = require("./constants");
 
 class GetDOM {
-  static async init(un, pw, page) {
+  static async init(un, pw, profile, page) {
     try {
       //Hack to quickly work around linkedin's lazy loader
       page.setViewport({
@@ -11,7 +11,7 @@ class GetDOM {
         "height": constants.viewportHeight
       });
 
-      await GetDOM.fillAndSubmitAuth(page, un, pw);
+      await GetDOM.fillAndSubmitAuth(page, un, pw, profile);
       await GetDOM.openSections(page);
       const scrapedDOM = await page.evaluate(() => document.querySelector(".core-rail").innerHTML);
       return (new JSDOM(scrapedDOM, { runScripts: "outside-only" })).window;
@@ -30,7 +30,7 @@ class GetDOM {
     await page.click(projectsOpener);
   }
 
-  static async fillAndSubmitAuth(page, un, pw) {
+  static async fillAndSubmitAuth(page, un, pw, profile) {
     const unField = "#login-email";
     const pwField = "#login-password";
     const submitButton = "#login-submit";
@@ -41,7 +41,7 @@ class GetDOM {
     await page.keyboard.type(pw);
     await page.click(submitButton);
     await page.waitForNavigation();
-    await page.goto("https://www.linkedin.com/in/adam-lang-96681764/",{"waitUntil": "networkidle2"});
+    await page.goto(profile, {"waitUntil": "networkidle2"});
 
     return page;
   }
