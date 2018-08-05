@@ -8,6 +8,6 @@
     "puppeteer": "^1.5.0"
   },
   "scripts": {
-    "start": "node writeFile.js"
+    "start": "node index.js"
   }
 }
