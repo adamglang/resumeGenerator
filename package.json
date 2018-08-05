@@ -5,6 +5,7 @@
   "dependencies": {
     "commander": "^2.16.0",
     "jsdom": "^11.11.0",
+    "node-http-server": "^8.1.2",
     "puppeteer": "^1.5.0"
   },
   "scripts": {
