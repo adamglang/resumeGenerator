@@ -146,14 +146,18 @@ body #inner-wrapper #main-area {
   padding: 0 40px;
   float: left;
 }
-body #inner-wrapper #main-area #experience .experience-info {
+body #inner-wrapper #main-area #main-area-inner-wrap {
+  border-bottom: #a88960 3px solid;
+  padding-bottom: 20px;
+}
+body #inner-wrapper #main-area #main-area-inner-wrap #experience .experience-info {
   float: left;
   width: 100%;
 }
-body #inner-wrapper #main-area #experience .experience-info .title {
+body #inner-wrapper #main-area #main-area-inner-wrap #experience .experience-info .title {
   float: left;
 }
-body #inner-wrapper #main-area #experience .experience-info .dates-worked {
+body #inner-wrapper #main-area #main-area-inner-wrap #experience .experience-info .dates-worked {
   float: right;
 }
 body #inner-wrapper #sidebar {
@@ -162,21 +166,23 @@ body #inner-wrapper #sidebar {
   width: 180px;
   padding: 0 40px;
 }
-body #inner-wrapper #sidebar #profile-pic img {
+body #inner-wrapper #sidebar #sidebar-inner-wrap {
+  border-bottom: #a88960 3px solid;
+}
+body #inner-wrapper #sidebar #sidebar-inner-wrap #profile-pic img {
   width: 100%;
 }
-body #inner-wrapper #sidebar #skills {
-  border-bottom: #a88960 1.5px solid;
+body #inner-wrapper #sidebar #sidebar-inner-wrap #skills {
   margin-bottom: 40px;
 }
-body #inner-wrapper #sidebar #skills .title span {
+body #inner-wrapper #sidebar #sidebar-inner-wrap #skills .title span {
   color: #42735E;
 }
-body #inner-wrapper #sidebar #skills .skill p {
+body #inner-wrapper #sidebar #sidebar-inner-wrap #skills .skill p {
   font-family: "open_sansregular";
   font-weight: bold;
 }
-body #inner-wrapper #sidebar #skills .skill p .endorsement-count {
+body #inner-wrapper #sidebar #sidebar-inner-wrap #skills .skill p .endorsement-count {
   color: #42735E;
 }
 body #template-footer {

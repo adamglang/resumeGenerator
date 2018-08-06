@@ -146,7 +146,8 @@ class CreateModel {
       const titleEl = project.querySelector(".pv-accomplishment-entity__title");
       const title = titleEl && CreateModel.stripSpace(titleEl.textContent);
       const dateEl = project.querySelector(".pv-accomplishment-entity__date");
-      const date = dateEl && CreateModel.stripSpace(dateEl.textContent);
+      const dates = dateEl && CreateModel.stripSpace(dateEl.textContent);
+      const date = dates.split(" – ")[0];
       const descriptionEl = project.querySelector(".pv-accomplishment-entity__description");
         //Puppeteer is giving an incorrect representation of the DOM in chromium for this one element
         //This is a hack to fix the issue for now

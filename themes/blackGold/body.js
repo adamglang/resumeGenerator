@@ -47,15 +47,20 @@ ${headerMarkup}
 ${descriptionMarkup}
     <section id="inner-wrapper">
         <section id="main-area">
-            ${experienceMarkup}
-            ${projectsMarkup}
-            ${volunteerMarkup}
+            <div id="main-area-inner-wrap">
+                ${experienceMarkup}
+                ${projectsMarkup}
+                ${volunteerMarkup}
+            </div>
         </section>
         <section id="sidebar">
-            <section id="profile-pic">
-                <img src=${profileImg} />
-            </section>
-            ${skillsetMarkup}
+            <div id="sidebar-inner-wrap">
+                <section id="profile-pic">
+                    <img src=${profileImg} />
+                </section>
+                ${skillsetMarkup}
+            </div>
+
         </section>
     </section>
     <footer id="template-footer">

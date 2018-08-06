@@ -173,16 +173,20 @@ body {
       border-right: @gold 3px solid;
       padding: 0 40px;
       float: left;
+      #main-area-inner-wrap {
+        border-bottom: @gold 3px solid;
+        padding-bottom: 20px;
 
-      #experience {
-        .experience-info {
-          float: left;
-          width: 100%;
-          .title {
+        #experience {
+          .experience-info {
             float: left;
-          }
-          .dates-worked {
-            float: right;
+            width: 100%;
+            .title {
+              float: left;
+            }
+            .dates-worked {
+              float: right;
+            }
           }
         }
       }
@@ -193,27 +197,29 @@ body {
       float: left;
       width: 180px;
       padding: 0 40px;
-      #profile-pic {
-        img {
-          width: 100%;
-        }
-      }
-
-      #skills {
-        border-bottom: @gold 1.5px solid;
-        margin-bottom: 40px;
-
-        .title {
-          span {
-            color: @greenish;
+      #sidebar-inner-wrap {
+        border-bottom: @gold 3px solid;
+        #profile-pic {
+          img {
+            width: 100%;
           }
         }
-        .skill {
-          p {
-            font-family: "open_sansregular";
-            font-weight: bold;
-            .endorsement-count {
+
+        #skills {
+          margin-bottom: 40px;
+
+          .title {
+            span {
               color: @greenish;
+            }
+          }
+          .skill {
+            p {
+              font-family: "open_sansregular";
+              font-weight: bold;
+              .endorsement-count {
+                color: @greenish;
+              }
             }
           }
         }

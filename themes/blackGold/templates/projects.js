@@ -19,7 +19,7 @@ const processBlock = ({
                 <h4 class="title">
                     <a href=${link.href}>${title}</a>
                 </h4>
-                <h4 class="dates-worked">${date.split("-")[0]}</h4>
+                <h4 class="dates-worked">${date}</h4>
             </div>
             <div class="description">${description}</div>
         </div>
