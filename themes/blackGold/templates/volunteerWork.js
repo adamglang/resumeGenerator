@@ -9,13 +9,14 @@ const volunteerBlocks = projects => projects.map(block => processBlock(block)).j
 
 const processBlock = ({
     title,
+    organization,
     dates,
     description
 }) => {
     return `
         <div class="block">
             <div class="info">
-                <h4 class="title">${title}</h4>
+                <h4 class="title">${title} for ${organization}</h4>
                 <h4 class="dates-worked">${dates}</h4>
             </div>
             <div class="description">${description}</div>
