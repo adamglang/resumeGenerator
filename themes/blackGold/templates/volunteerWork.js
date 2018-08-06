@@ -5,7 +5,7 @@ module.exports = ({title, blocks}) => `
     </section>
 `;
 
-const volunteerBlocks = projects => projects.map(block => processBlock(block));
+const volunteerBlocks = projects => projects.map(block => processBlock(block)).join("");
 
 const processBlock = ({
     title,
@@ -13,7 +13,7 @@ const processBlock = ({
     description
 }) => {
     return `
-        <div class="volunteer-block">
+        <div class="block">
             <div class="info">
                 <h4 class="title">${title}</h4>
                 <h4 class="dates-worked">${dates}</h4>

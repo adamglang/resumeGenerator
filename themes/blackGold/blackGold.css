@@ -1,4 +1,5 @@
 body {
+  @gold 1px solid: @gold 1px solid;
   margin: 0;
 }
 body h3.title {
@@ -8,6 +9,9 @@ body h3.title {
   display: inline-block;
   padding-right: 40px;
 }
+body div.block {
+  margin-bottom: 30px;
+}
 body .info {
   width: 100%;
   display: table;
@@ -15,6 +19,9 @@ body .info {
 body .info h4.title {
   font-family: "montserratbold";
   float: left;
+}
+body .info h4.title a {
+  color: #42735E;
 }
 body .info .dates-worked {
   font-family: "montserratmedium";
@@ -33,7 +40,7 @@ body #template-header {
 body #template-header #header-info {
   display: flex;
   flex-wrap: wrap;
-  border: #a88960 3px solid;
+  border: #41596C 3px solid;
   width: 600px;
   height: 100px;
   position: absolute;
@@ -46,7 +53,7 @@ body #template-header #header-info {
 }
 body #template-header #header-info #initials-box {
   width: 100px;
-  border-right: #a88960 3px solid;
+  border-right: #41596C 3px solid;
 }
 body #template-header #header-info #initials-box .initials {
   width: 100%;
@@ -64,7 +71,7 @@ body #template-header #header-info #initials-box #last-initial {
 }
 body #template-header #header-info #initials-box hr {
   transform: rotate(135deg);
-  border: #a88960 1px solid;
+  border: #41596C 1px solid;
   margin: 52px 15px 0;
 }
 body #template-header #name-box {
@@ -73,7 +80,7 @@ body #template-header #name-box {
   top: 0;
   right: 0;
   height: 57px;
-  border-bottom: #a88960 3px solid;
+  border-bottom: #41596C 3px solid;
   text-transform: uppercase;
 }
 body #template-header #name-box span {
@@ -104,7 +111,7 @@ body #template-header #header-date {
   width: 150px;
   bottom: 0;
   right: 0;
-  border-left: #a88960 3px solid;
+  border-left: #41596C 3px solid;
 }
 body #template-header #header-date span {
   position: absolute;
@@ -114,7 +121,7 @@ body #template-header #header-date span {
   left: 15px;
 }
 body #template-description {
-  padding: 50px;
+  padding: 35px 50px;
   text-align: center;
   background: #a88960;
   color: #FFF;
@@ -124,13 +131,12 @@ body #template-description header {
   text-transform: uppercase;
   font-size: 16px;
   letter-spacing: 5px;
+  margin-bottom: 20px;
 }
 body #template-description #description {
   font-size: 14px;
 }
 body #inner-wrapper {
-  border-left: #a88960 3px solid;
-  border-right: #a88960 3px solid;
   margin: 30px 50px;
   float: left;
 }
@@ -140,7 +146,18 @@ body #inner-wrapper #main-area {
   padding: 0 40px;
   float: left;
 }
+body #inner-wrapper #main-area #experience .experience-info {
+  float: left;
+  width: 100%;
+}
+body #inner-wrapper #main-area #experience .experience-info .title {
+  float: left;
+}
+body #inner-wrapper #main-area #experience .experience-info .dates-worked {
+  float: right;
+}
 body #inner-wrapper #sidebar {
+  border-right: #a88960 3px solid;
   float: left;
   width: 180px;
   padding: 0 40px;
@@ -148,17 +165,43 @@ body #inner-wrapper #sidebar {
 body #inner-wrapper #sidebar #profile-pic img {
   width: 100%;
 }
+body #inner-wrapper #sidebar #skills {
+  border-bottom: #a88960 1.5px solid;
+  margin-bottom: 40px;
+}
+body #inner-wrapper #sidebar #skills .title span {
+  color: #42735E;
+}
 body #inner-wrapper #sidebar #skills .skill p {
   font-family: "open_sansregular";
+  font-weight: bold;
 }
-body #inner-wrapper #sidebar #contact #contact-socials img {
-  width: 50px;
+body #inner-wrapper #sidebar #skills .skill p .endorsement-count {
+  color: #42735E;
 }
 body #template-footer {
   float: left;
   width: 100%;
-  height: 200px;
   background: #000;
+  min-height: 320px;
+}
+body #template-footer #contact {
+  color: #FFF;
+  padding: 50px 90px;
+}
+body #template-footer #contact a {
+  font-family: "montserratmedium";
+  color: #FFF;
+}
+body #template-footer #contact #contact-info {
+  float: left;
+}
+body #template-footer #contact #contact-socials {
+  float: right;
+}
+body #template-footer #contact #contact-socials img {
+  max-width: 50px;
+  margin-bottom: 25px;
 }
 @font-face {
   font-family: "montserratbold";
@@ -185,4 +228,4 @@ body #template-footer {
   font-weight: normal;
   font-style: normal;
 }
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=blackGold.css.map */

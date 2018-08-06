@@ -12,8 +12,17 @@ class GetDOM {
       });
 
       await GetDOM.fillAndSubmitAuth(page, un, pw, profile);
+
+      console.log("---- Successfully logged into your linkedIn profile!");
+
       await GetDOM.openSections(page);
+
+      console.log("------ Scraping all the data from linkedIn");
+
       const scrapedDOM = await page.evaluate(() => document.querySelector(".core-rail").innerHTML);
+
+      console.log("------- Successfully scraped the DOM");
+
       return (new JSDOM(scrapedDOM, { runScripts: "outside-only" })).window;
     } catch(e) {
       console.error(`Puppeteer couldn't get the DOM - ${e.stack}`)
@@ -21,6 +30,8 @@ class GetDOM {
   }
 
   static async openSections(page) {
+    console.log("----- Opening all the sections with data");
+
     const summaryOpener = ".pv-top-card-section__summary-toggle-button";
     const skillsOpener = ".pv-skills-section__additional-skills";
     const projectsOpener = ".pv-accomplishments-block__expand";
@@ -34,6 +45,8 @@ class GetDOM {
     const unField = "#login-email";
     const pwField = "#login-password";
     const submitButton = "#login-submit";
+
+    console.log("--- Logging in into your linkedIn profile");
 
     await page.click(unField);
     await page.keyboard.type(un);

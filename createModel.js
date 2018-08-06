@@ -1,5 +1,9 @@
 class CreateModel {
   static async init(document) {
+    console.log("-------- Creating a data model from the scraped DOM");
+
+    CreateModel.removeHiddenElements(document);
+
     return {
       "headerData": CreateModel.getHeaderData(document),
       "description": CreateModel.getDescription(document),
@@ -144,7 +148,10 @@ class CreateModel {
       const dateEl = project.querySelector(".pv-accomplishment-entity__date");
       const date = dateEl && CreateModel.stripSpace(dateEl.textContent);
       const descriptionEl = project.querySelector(".pv-accomplishment-entity__description");
-      const description = descriptionEl && CreateModel.stripSpace(descriptionEl.textContent);
+        //Puppeteer is giving an incorrect representation of the DOM in chromium for this one element
+        //This is a hack to fix the issue for now
+      const descriptionText = descriptionEl.nextSibling.nodeValue;
+      const description = descriptionText && CreateModel.stripSpace(descriptionText);
       const linkEl = project.querySelector(".pv-accomplishment-entity__external-source");
       const linkText = linkEl && CreateModel.stripSpace(linkEl.textContent);
       const linkHref = linkEl && linkEl.href;
@@ -172,7 +179,15 @@ class CreateModel {
 
   static makeFormattedDate() {
     const date = new Date();
-    return `0${(date.getMonth() + 1)} - 0${(date.getDate())} - ${date.getFullYear()}`
+    return `0${(date.getMonth() + 1)}-0${(date.getDate())}-${date.getFullYear()}`
+  }
+
+  static removeHiddenElements(document) {
+    const hiddenElements = document.querySelectorAll(".visually-hidden");
+
+    for(const hiddenElement of hiddenElements) {
+        hiddenElement.parentElement.removeChild(hiddenElement);
+    }
   }
 }
 

@@ -1,0 +1,290 @@
+body {
+  @black: #000;
+  @gold: #a88960;
+  @purpleGrey: #41596C;
+  @greenish: #42735E;
+  @gold 1px solid: @gold 1px solid;
+
+  margin: 0;
+
+  h3.title {
+    font-family: "montserratbold";
+    padding-bottom: 10px;
+    border-bottom: @gold 2px solid;
+    display: inline-block;
+    padding-right: 40px;
+  }
+
+  div.block {
+    margin-bottom: 30px;
+  }
+
+  .info {
+    width: 100%;
+    display: table;
+
+    h4.title {
+      font-family: "montserratbold";
+      float: left;
+
+      a {
+        color: @greenish;
+      }
+    }
+    .dates-worked {
+      font-family: "montserratmedium";
+      color: @gold;
+      float: right;
+    }
+  }
+  .description {
+    font-family: "open_sansregular";
+  }
+
+  #template-header {
+    background: @black;
+    color: #FFF;
+    height: 200px;
+    position: relative;
+
+    #header-info {
+      display: flex;
+      flex-wrap: wrap;
+      border: @purpleGrey 3px solid;
+      width: 600px;
+      height: 100px;
+      position: absolute;
+      top: 47px;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      margin: 0 auto;
+      font-family: "montserratbold";
+
+
+      #initials-box {
+        width: 100px;
+        border-right: @purpleGrey 3px solid;
+
+        .initials {
+          width: 100%;
+          display: block;
+          position: absolute;
+          font-size: 22px;
+        }
+
+        #first-initial {
+          top: 15px;
+          left: 20px;
+        }
+
+        #last-initial {
+          bottom: 15px;
+          left: 65px;
+        }
+
+        hr {
+          transform: rotate(135deg);
+          border: @purpleGrey 1px solid;
+          margin: 52px 15px 0;
+        }
+      }
+    }
+
+    #name-box {
+      width: 500px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 57px;
+      border-bottom: @purpleGrey 3px solid;
+      text-transform: uppercase;
+
+      span {
+        left: 30px;
+        position: absolute;
+        top: 13px;
+        font-size: 22px;
+        letter-spacing: 10px;
+      }
+    }
+
+    #title-box {
+      position: absolute;
+      height: 40px;
+      width: 350px;
+      bottom: 0;
+      left: 100px;
+
+      span {
+        left: 30px;
+        position: absolute;
+        top: 10px;
+        font-size: 15px;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+      }
+    }
+
+    #header-date {
+      position: absolute;
+      height: 40px;
+      width: 150px;
+      bottom: 0;
+      right: 0;
+      border-left: @purpleGrey 3px solid;
+
+      span {
+        position: absolute;
+        letter-spacing: 4px;
+        font-size: 15px;
+        top: 10px;
+        left: 15px;
+      }
+    }
+  }
+
+  #template-description {
+    padding: 35px 50px;
+    text-align: center;
+    background: @gold;
+    color: #FFF;
+    font-family: "open_sansregular";
+
+    header {
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: 5px;
+      margin-bottom: 20px;
+    }
+
+    #description {
+      font-size: 14px;
+    }
+  }
+
+  #inner-wrapper {
+
+    margin: 30px 50px;
+    float: left;
+
+    #main-area {
+      width: 550px;
+      border-right: @gold 3px solid;
+      padding: 0 40px;
+      float: left;
+
+      #experience {
+        .experience-info {
+          float: left;
+          width: 100%;
+          .title {
+            float: left;
+          }
+          .dates-worked {
+            float: right;
+          }
+        }
+      }
+    }
+
+    #sidebar {
+      border-right: @gold 3px solid;
+      float: left;
+      width: 180px;
+      padding: 0 40px;
+      #profile-pic {
+        img {
+          width: 100%;
+        }
+      }
+
+      #skills {
+        border-bottom: @gold 1.5px solid;
+        margin-bottom: 40px;
+
+        .title {
+          span {
+            color: @greenish;
+          }
+        }
+        .skill {
+          p {
+            font-family: "open_sansregular";
+            font-weight: bold;
+            .endorsement-count {
+              color: @greenish;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  #template-footer {
+    float: left;
+    width: 100%;
+    background: @black;
+
+    //get rid of this soon
+    min-height: 320px;
+
+    #contact {
+      color: #FFF;
+      padding: 50px 90px;
+
+      a {
+        font-family: "montserratmedium";
+        color: #FFF;
+      }
+
+      #contact-info {
+        float: left;
+      }
+
+      #contact-socials {
+        float: right;
+        img {
+          max-width: 50px;
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}
+
+@font-face {
+  font-family: "montserratbold";
+  src: url("fonts/montserrat-bold-webfont.woff2") format("woff2"),
+  url("fonts/montserrat-bold-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montserratmedium";
+  src: url("fonts/montserrat-medium-webfont.woff2") format("woff2"),
+  url("fonts/montserrat-medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "montserratregular";
+  src: url("fonts/montserrat-regular-webfont.woff2") format("woff2"),
+  url("fonts/montserrat-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "open_sansregular";
+  src: url("fonts/OpenSans-Regular-webfont.eot");
+  src: url("fonts/OpenSans-Regular-webfont.eot?#iefix") format("embedded-opentype"),
+  url("fonts/OpenSans-Regular-webfont.woff2") format("woff2"),
+  url("fonts/OpenSans-Regular-webfont.woff") format("woff"),
+  url("fonts/OpenSans-Regular-webfont.ttf") format("truetype"),
+  url("fonts/OpenSans-Regular-webfont.svg#open_sansregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

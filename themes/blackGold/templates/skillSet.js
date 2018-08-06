@@ -1,20 +1,27 @@
-module.exports = ({title, skills}) => `
+module.exports = ({title, skills}, profile) => `
     <section id="skills">
-        <h3 class="title">${title}</h3>
+        <h3 class="title">${title} / <span>Endorsements</span></h3>
         <section id="skills">
-            <h3 class="title">${skills.title}</h3>
-            ${skillBlocks(skills)}
+            ${skillBlocks(skills, profile)}
         </section>
     </section>
 `;
 
-const skillBlocks = skills => skills.map(skill => processBlock(skill));
+const skillBlocks = (skills, profile) => {
+    const filteredSkills = skills.filter(skill => skill.endorsementCount > 0);
+    const sortedSkills = filteredSkills.sort((a, b) => b.endorsementCount - a.endorsementCount);
+    return sortedSkills.map(skill => processBlock(skill, profile)).join("");
+};
 
-const processBlock = ({skillName, endorsementCount}) => {
+const processBlock = ({skillName, endorsementCount}, profile) => {
     return `
         <div class="skill">
-            <p>${skillName} | ${endorsementCount} endorsements</p>
-            <hr />
+            <p>
+                <span class="skill-name">${skillName} / </span>
+                <a href=${profile} class="endorsement-count">
+                    ${endorsementCount}
+                </a>
+            </p>
         </div>
     `
 };

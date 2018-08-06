@@ -5,7 +5,7 @@ module.exports = ({title, blocks}) => `
     </section>
 `;
 
-const experienceBlocks = blocks => blocks.map(block => processBlock(block));
+const experienceBlocks = blocks => blocks.map(block => processBlock(block)).join("");
 
 const processBlock = ({
     title,
@@ -14,7 +14,7 @@ const processBlock = ({
     description
 }) => {
     return `
-        <div class="experience-block">
+        <div class="block">
             <div class="experience-info">
                 <h4 class="title">${title} - ${organization}</h4>
                 <h4 class="dates-worked">${dates}</h4>
