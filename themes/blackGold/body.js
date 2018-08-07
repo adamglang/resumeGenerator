@@ -8,14 +8,17 @@ const footerModule = require("./templates/footer");
 
 
 class Body {
-    static init({headerData, description, experience, volunteerWork, skillSet, projects}, profile) {
+    static init(
+        {headerData, description, experience, volunteerWork, skillSet, projects},
+        {linkedin, name, phone, email, github, stackOverflow}
+    ) {
         const headerMarkup = headerModule(headerData);
         const descriptionMarkup = descriptionModule(description);
         const experienceMarkup = experienceModule(experience);
         const volunteerMarkup = volunteerModule(volunteerWork);
-        const skillsetMarkup = skillSetModule(skillSet, profile);
+        const skillsetMarkup = skillSetModule(skillSet, linkedin);
         const projectsMarkup = projectsModule(projects);
-        const footerMarkup = footerModule();
+        const footerMarkup = footerModule(phone, email, github, stackOverflow, linkedin);
         const profileImg = headerData.profileImg;
 
         return Body.generateTemplate(

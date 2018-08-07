@@ -3,7 +3,7 @@ const { JSDOM } = jsdom;
 const constants = require("./constants");
 
 class GetDOM {
-  static async init(un, pw, profile, page) {
+  static async init({un, pw, linkedin}, page) {
     try {
       //Hack to quickly work around linkedin's lazy loader
       page.setViewport({
@@ -11,18 +11,9 @@ class GetDOM {
         "height": constants.viewportHeight
       });
 
-      await GetDOM.fillAndSubmitAuth(page, un, pw, profile);
-
-      console.log("---- Successfully logged into your linkedIn profile!");
-
+      await GetDOM.fillAndSubmitAuth(page, un, pw, linkedin);
       await GetDOM.openSections(page);
-
-      console.log("------ Scraping all the data from linkedIn");
-
       const scrapedDOM = await page.evaluate(() => document.querySelector(".core-rail").innerHTML);
-
-      console.log("------- Successfully scraped the DOM");
-
       return (new JSDOM(scrapedDOM, { runScripts: "outside-only" })).window;
     } catch(e) {
       console.error(`Puppeteer couldn't get the DOM - ${e.stack}`)
@@ -30,8 +21,6 @@ class GetDOM {
   }
 
   static async openSections(page) {
-    console.log("----- Opening all the sections with data");
-
     const summaryOpener = ".pv-top-card-section__summary-toggle-button";
     const skillsOpener = ".pv-skills-section__additional-skills";
     const projectsOpener = ".pv-accomplishments-block__expand";
@@ -41,20 +30,17 @@ class GetDOM {
     await page.click(projectsOpener);
   }
 
-  static async fillAndSubmitAuth(page, un, pw, profile) {
+  static async fillAndSubmitAuth(page, un, pw, linkedin) {
     const unField = "#login-email";
     const pwField = "#login-password";
     const submitButton = "#login-submit";
-
-    console.log("--- Logging in into your linkedIn profile");
-
     await page.click(unField);
     await page.keyboard.type(un);
     await page.click(pwField);
     await page.keyboard.type(pw);
     await page.click(submitButton);
     await page.waitForNavigation();
-    await page.goto(profile, {"waitUntil": "networkidle2"});
+    await page.goto(linkedin, {"waitUntil": "networkidle2"});
 
     return page;
   }

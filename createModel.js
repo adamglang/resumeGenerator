@@ -1,7 +1,5 @@
 class CreateModel {
   static async init(document) {
-    console.log("-------- Creating a data model from the scraped DOM");
-
     CreateModel.removeHiddenElements(document);
 
     return {
