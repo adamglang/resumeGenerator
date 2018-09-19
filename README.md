@@ -6,7 +6,7 @@ Generate a pdf resume from your linkedin profile's data
 3. Follow the prompts
 4. Get your pdf resume from root directory (it will be called "resume.pdf")
 
-##Please feel free to add themes (and make a PR :)
+## Please feel free to add themes (and make a PR :)
 
 Easy way to develop new themes: 
 1. Run the app. You will now have an html file in the "blackGold" theme
@@ -16,5 +16,5 @@ Easy way to develop new themes:
 5. Edit the CSS / LESS files to make your new theme
 6. In "constants.js" change the "theme" property to reflect the **exact** name of your theme (should be the same as the directory name and CSS file)
 
-####Note:
+#### Note:
 If you want to see what is going on in the browser, you can change the "headless" property in constants.js to "false". **Be aware:** actually printing a pdf **must** be done in *headless* mode.
