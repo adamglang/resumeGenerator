@@ -79,12 +79,12 @@ class CreateModel {
       const summaryInfoEl = blockEl.querySelector(".pv-entity__summary-info");
       const summaryInfoTitleEl = summaryInfoEl && summaryInfoEl.querySelector("h3");
       const summaryInfoTitle = CreateModel.stripSpace(summaryInfoTitleEl.textContent);
-      const summaryInfoItems = summaryInfoEl && summaryInfoEl.querySelectorAll("h4");
-      const organization = CreateModel.extractSummaryItemText(summaryInfoItems[0]);
-      const dates = CreateModel.extractSummaryItemText(summaryInfoItems[1]);
-      const duration = CreateModel.extractSummaryItemText(summaryInfoItems[2]);
-      const area = CreateModel.extractSummaryItemText(summaryInfoItems[3]);
-      const descriptionEl = blockEl.querySelector(".pv-entity__extra-details p");
+      const summaryInfoItems = summaryInfoEl && summaryInfoEl.querySelectorAll("h4") || "";
+      const organization = CreateModel.extractSummaryItemText(summaryInfoItems[0]) || "";
+      const dates = CreateModel.extractSummaryItemText(summaryInfoItems[1]) || "";
+      const duration = CreateModel.extractSummaryItemText(summaryInfoItems[2]) || "";
+      const area = CreateModel.extractSummaryItemText(summaryInfoItems[3]) || "";
+      const descriptionEl = blockEl.querySelector(".pv-entity__extra-details p") || "";
       const description = CreateModel.stripSpace(descriptionEl.textContent);
 
       blocks.push({
@@ -172,7 +172,7 @@ class CreateModel {
     }
   }
 
-  static stripSpace(str){
+  static stripSpace(str) {
     return (str && str.replace(/[\n\r]+|[\s]{2,}/g, " ").trim()) || "";
   }
 

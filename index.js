@@ -30,7 +30,7 @@ class MakeResume {
 
             await page.goto("http://localhost:3000", {"waitUntil": "networkidle2"});
             await page.pdf({
-                "path": "/Users/langa/Projects/resumeGenerator/resume.pdf",
+                "path": `${__dirname}/resume.pdf`,
                 "printBackground": true,
                 "width": "1000px"
             });

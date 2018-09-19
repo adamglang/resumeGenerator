@@ -12,5 +12,6 @@ module.exports = {
         "png": "image/png",
         "woff": "font/woff",
         "woff2": "font/woff2"
-    }
+    },
+    "theme": "blackGold"
 };
