@@ -20,6 +20,9 @@ coverage
 # Webstorm
 .idea/
 
+# Vscode
+.vscode/
+
 # nyc test coverage
 .nyc_output
 
@@ -66,3 +69,6 @@ typings/
 #generated files
 resume.pdf
 ./themes/blackGold/index.html
+
+#gen
+themes/
