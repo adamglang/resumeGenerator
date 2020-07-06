@@ -1,58 +1,61 @@
 class CreateModel {
-  static async init(document) {
-    CreateModel.removeHiddenElements(document);
+  static async init(document, profileName, jobTitle) {
+    try {
+      CreateModel.removeHiddenElements(document);
 
-    return {
-      "headerData": CreateModel.getHeaderData(document),
-      "description": CreateModel.getDescription(document),
-      "experience": CreateModel.getBlocklist(document, "#experience-section"),
-      "volunteerWork": CreateModel.getBlocklist(document, ".volunteering-section"),
-      "skillSet": CreateModel.getSkills(document),
-      "projects": CreateModel.getProjects(document)
+      return {
+        "headerData": CreateModel.getHeaderData(document, profileName, jobTitle),
+        "description": CreateModel.getDescription(document),
+        "experience": CreateModel.getBlocklist(document, "#experience-section"),
+        "volunteerWork": CreateModel.getBlocklist(document, ".volunteering-section"),
+        "skillSet": CreateModel.getSkills(document),
+        "projects": CreateModel.getProjects(document)
+      }
+    } catch(e) {
+      throw new Error(`Unable to create the data model - ${e.stack}`);
     }
   }
 
-  static getHeaderData(document) {
+  static getHeaderData(document, profileName, jobTitle) {
     const profileImgEl = document.querySelector("[data-control-name=edit_profile_photo] img");
     const profileImg = profileImgEl && profileImgEl.src;
-    const profileNameEl = document.querySelector(".pv-top-card-section__name");
-    const profileName = profileNameEl && CreateModel.stripSpace(profileNameEl.textContent);
-    const jobTitleEl = document.querySelector(".pv-top-card-section__headline");
-    const jobTitle = jobTitleEl && CreateModel.stripSpace(jobTitleEl.textContent);
-    const locationEl = document.querySelector(".pv-top-card-section__location");
-    const location = locationEl && CreateModel.stripSpace(locationEl.textContent);
     const profileInitials = CreateModel.getInitials(profileName);
-    const date = CreateModel.makeFormattedDate();
+    const date = CreateModel.makeFormattedDate(); 
+
+    console.log('Gathered the header data');
 
     return {
-      "profileImg": profileImg,
-      "profileName": profileName,
-      "profileInitials": profileInitials,
-      "jobTitle": jobTitle,
-      "location": location,
-      "date": date
+      profileImg,
+      profileName,
+      profileInitials,
+      jobTitle,
+      date,
     }
   }
 
   static getInitials(profileName) {
     let result = "";
     const nameArr = profileName && typeof profileName === "string" && profileName.split(" ");
+    const firstName = nameArr[0];
+    const lastName = nameArr[nameArr.length - 1];
 
     if(nameArr) {
       result = {
-        "firstInitial": nameArr[0].substring(0, 1),
-        "lastInitial": nameArr[1].substring(0, 1)
+        "firstInitial": firstName.substring(0, 1),
+        "lastInitial": lastName.substring(0, 1)
       }
     }
+
+    console.log('Created you initials');
 
     return result;
   }
 
   static getDescription(document) {
-    const descriptionEl = document.querySelector(".pv-top-card-section__summary-text");
-    const useLessLearnMore = descriptionEl && descriptionEl.querySelector(".lt-line-clamp__ellipsis");
-
-    descriptionEl.removeChild(useLessLearnMore);
+    const descriptionEl = document.querySelector(".pv-about__summary-text");
+    const uselessNode = descriptionEl.querySelector('.lt-line-clamp__ellipsis');
+    descriptionEl.removeChild(uselessNode);
+    console.log('Got the profile description')
     return descriptionEl.innerHTML;
   }
 
@@ -61,6 +64,8 @@ class CreateModel {
     const blockRootElement = sectionEl && sectionEl.querySelector(".pv-profile-section__section-info");
     const titleEl = sectionEl.querySelector(".pv-profile-section__card-heading");
     const title = CreateModel.stripSpace(titleEl.textContent);
+
+    console.log('Got the blocklists');
 
     return {
       "title": title,
@@ -98,6 +103,8 @@ class CreateModel {
       });
     }
 
+    console.log('Got a block')
+
     return blocks;
   }
 
@@ -105,6 +112,9 @@ class CreateModel {
     if(summaryItem) {
       const spans = summaryItem.querySelectorAll("span");
       const lastSpan = spans && [].slice.call(spans).pop();
+
+      console.log('Got summary items');
+
       return lastSpan && CreateModel.stripSpace(lastSpan.textContent);
     }
   }
@@ -127,6 +137,8 @@ class CreateModel {
         "endorsementCount": endorsementCount
       })
     }
+
+    console.log('Got the skills');
 
     return {
       "title": "Skills",
@@ -165,6 +177,8 @@ class CreateModel {
         }
       });
     }
+
+    console.log('Got the projects');
 
     return {
       "title": "Projects",

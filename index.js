@@ -13,11 +13,17 @@ class MakeResume {
 
             console.log("Sweet! Logging into linkedin");
 
-            const browser = await puppeteer.launch({"headless": constants.isHeadless});
+            const browser = await puppeteer.launch({
+                "headless": constants.isHeadless,
+                "defaultViewport": {
+                    width: constants.viewportWidth,
+                    height: constants.viewportHeight,
+                }
+            });
             const page = await browser.newPage();
-            await page.goto("https://www.linkedin.com/", {"waitUntil": "networkidle2"});
+            await page.goto("https://www.linkedin.com/login", {"waitUntil": "networkidle2"});
             const window = await getDOM.init(userData, page);
-            const model = await createModel.init(window.document);
+            const model = await createModel.init(window.document, userData.name, userData.jobTitle);
 
             console.log("I successfully generated the data model from your data. Making the PDF now...")
 
@@ -39,7 +45,7 @@ class MakeResume {
 
             process.exit();
         } catch(e) {
-            console.error(`Something went wrong: ${e.stack}`);
+            throw new Error(`Something went wrong: ${e.stack}`);
         }
     }
 }

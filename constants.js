@@ -1,7 +1,8 @@
 module.exports = {
     "viewportWidth": 1280,
-    "viewportHeight": 9000,
+    "viewportHeight": 40000,
     "isHeadless": true,
+    "waitForLazyLoader": 5000, 
     "allowedTypes": {
         "html": "text/html",
         "css": "text/css",
